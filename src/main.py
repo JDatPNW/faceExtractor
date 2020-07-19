@@ -30,7 +30,7 @@ class Main:
             vidid = vidid+1
             dir, url = arch.getCurrentDir(line, experiment)
             cap, best = load.loadStream(url)
-            cap.open(best.url)
+            cap.open(best) #cap.open("./new_a/%05d.jpg") THIS WORKS FOR IMAGES!! need to only return the path in class
             num = 0;
             if not os.path.exists(dir):
                 os.makedirs(dir)
@@ -52,7 +52,7 @@ class Main:
                         break
             vis.closeWindows()
             cap.release()
-            
+
             print("#######################################")
             print("          Video {} done!               ".format(vidid))
             print("#######################################")

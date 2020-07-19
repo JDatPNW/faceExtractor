@@ -11,7 +11,7 @@ class Loader:
         video = pafy.new(url)
         best = video.getbest(preftype="mp4")
         cap = cv2.VideoCapture()
-        return cap, best
+        return cap, best.url
 
     def getFileLength(self, file):
         for i, l in enumerate(file):

@@ -1,5 +1,6 @@
 # faceTrack specific ignores
 results/*
+!results/.gitkeep 
 TODO
 Notes
 in

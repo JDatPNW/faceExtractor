@@ -19,7 +19,7 @@ class Main:
         log = Logger()
         load =  Loader()
         arch = Archiver()
-        track = ocvTracker()
+        track = dlibTracker()
         track.initTracker()
 
         file = load.loadList(inputfile)
@@ -52,7 +52,7 @@ class Main:
                         break
             vis.closeWindows()
             cap.release()
-
+            
             print("#######################################")
-            print("           Video done{}                ").format(vidid)
+            print("          Video {} done!               ".format(vidid))
             print("#######################################")

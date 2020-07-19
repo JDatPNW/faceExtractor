@@ -10,7 +10,6 @@ class Archiver:
     def cropAndResize(self, frame, i, d):
         if(d[0][0]>=0 and  d[0][1]>=0 and d[1][0]>=0 and d[1][1]>=0):
             self.crop_img = frame[d[0][1]:d[1][1],  d[0][0]: d[1][0]]
-            print(d[0][1],d[1][1],  d[0][0], d[1][0])
             self.crop_img_re = cv2.resize(self.crop_img, (48,48))
             return self.crop_img_re
 

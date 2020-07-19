@@ -1,8 +1,11 @@
 # faceTrack specific ignores
 results/*
 !results/.gitkeep 
+input/*
+!input/.gitkeep 
 TODO
 Notes
+devNotes
 in
 src/__pycache__
 

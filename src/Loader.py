@@ -3,8 +3,7 @@ import cv2, pafy, os
 class Loader:
 
     def loadList(self, inputfile):
-        inputlocation = "./input/" + inputfile
-        file = open(inputlocation, "r")
+        file = open(inputfile, "r")
         return file
 
     def loadStream(self, url):

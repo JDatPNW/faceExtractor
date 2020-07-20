@@ -6,6 +6,8 @@ from .Tracker import Tracker
 from .dlibTracker import dlibTracker
 from .ocvTracker import ocvTracker
 from .Logger import Logger
+from .clInitializer import clInitializer
+from .guiInitializer import guiInitializer
 import os, cv2
 
 
@@ -13,7 +15,7 @@ import os, cv2
 class Main:
     def main(self):
 
-        init = Initializer()
+        init = guiInitializer()
         visualize, inputfile, experiment, threshold, sampling = init.getInput()
         vis = Visualizer(visualize)
         log = Logger()

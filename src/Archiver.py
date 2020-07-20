@@ -4,7 +4,7 @@ class Archiver:
 
     def saveImg(self, dir, num, scores, crop_img_re, d):
         if(d[0][0]>=0 and  d[0][1]>=0 and d[1][0]>=0 and d[1][1]>=0):
-            self.loc = dir + "/" + str(num) + " - " + str(round(scores,4)) + ".jpg"
+            self.loc = os.path.dirname(os.path.abspath(__file__)) + "/../" + dir + "/" + str(num) + " - " + str(round(scores,4)) + ".jpg"
             cv2.imwrite(self.loc, crop_img_re)
 
     def cropAndResize(self, frame, i, d):

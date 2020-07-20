@@ -76,5 +76,5 @@ class guiInitializer(Initializer):
     def getInput(self):
         self.mainWindow()
         self.main.mainloop()
-
-        return self.visual.get(), self.main.inputdir, self.folder.get(), self.thresh.get(), self.samp.get()
+        self.folder_fin = self.folder.get() + "/"
+        return self.visual.get(), self.main.inputdir, self.folder_fin, self.thresh.get(), self.samp.get()

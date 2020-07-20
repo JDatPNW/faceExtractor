@@ -7,7 +7,7 @@ class Visualizer:
 
     def displayVideo(self, frame):
         if(self.visualize==1):
-            cv2.imshow('frame',numpy.array(frame, dtype = numpy.uint8))
+            cv2.imshow('FaceExtractor Video Feed',numpy.array(frame, dtype = numpy.uint8))
             if cv2.waitKey(5) & 0xFF == ord('q'):
                 return 1
             else:

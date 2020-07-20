@@ -8,16 +8,16 @@ class guiInitializer(Initializer):
     def __init__(self):
         self.main = tkinter.Tk()
         self.main.title('FaceExtractor Config')
-        self.tracker = tkinter.StringVar()
-        self.tracker.set("dlib")
-        self.visual = tkinter.BooleanVar()
-        self.visual.set(False)
-        self.thresh = tkinter.DoubleVar()
-        self.thresh.set(1.0)
-        self.samp = tkinter.DoubleVar()
-        self.samp.set(1.0)
-        self.folder = tkinter.StringVar()
-        self.folder.set("default")
+        self.vTracker = tkinter.StringVar()
+        self.vTracker.set("dlib")
+        self.vVisual = tkinter.BooleanVar()
+        self.vVisual.set(False)
+        self.vThresh = tkinter.DoubleVar()
+        self.vThresh.set(1.0)
+        self.vSample = tkinter.DoubleVar()
+        self.vSample.set(1.0)
+        self.vOutputFolder = tkinter.StringVar()
+        self.vOutputFolder.set("default")
 
     def end(self):
         self.main.destroy()
@@ -25,56 +25,56 @@ class guiInitializer(Initializer):
     def mainWindow(self):
         tkinter.Label(self.main, text="Face Extractor").grid(row=0, columnspan=3)
 
-        self.indirLabel = tkinter.Label(self.main, text = "Choose Input File: ").grid(row=1, column=0, sticky="W")
-        self.indir = tkinter.Button(self.main, text = "Open", command = self.chooseInput)
-        self.indir.grid(row=1, column=1, sticky="W")
+        self.lInputFile = tkinter.Label(self.main, text = "Choose Input File: ").grid(row=1, column=0, sticky="W")
+        self.bInputFile = tkinter.Button(self.main, text = "Open", command = self.chooseInput)
+        self.bInputFile.grid(row=1, column=1, sticky="W")
 
-        self.folderLabel = tkinter.Label(self.main, text = "Output Folder Name:").grid(row=2, column=0, sticky="W")
-        self.folderinput = tkinter.Entry(self.main, textvariable=self.folder)
-        self.folderinput.grid(row=2, column=1, sticky="W")
+        self.lOutputFolder = tkinter.Label(self.main, text = "Output Folder Name:").grid(row=2, column=0, sticky="W")
+        self.eOutputFolder = tkinter.Entry(self.main, textvariable=self.vOutputFolder)
+        self.eOutputFolder.grid(row=2, column=1, sticky="W")
 
         self.chooseTracker()
         self.chooseVisualize()
 
-        self.threshholdLabel = tkinter.Label(self.main, text = "Threshold:").grid(row=3, column=0, sticky="W")
-        self.threshold = tkinter.Scale(self.main, from_=0, to=10, resolution=0.1, variable = self.thresh, length=250 ,tickinterval=1, orient="horizontal")
-        self.threshold.grid(row=3, column=1, sticky="W")
+        self.lThreshold = tkinter.Label(self.main, text = "Threshold:").grid(row=3, column=0, sticky="W")
+        self.sThreshold = tkinter.Scale(self.main, from_=0, to=10, resolution=0.1, variable = self.vThresh, length=250 ,tickinterval=1, orient="horizontal")
+        self.sThreshold.grid(row=3, column=1, sticky="W")
 
-        self.samplingLabel = tkinter.Label(self.main, text = "Sampling:").grid(row=4, column=0, sticky="W")
-        self.sampling = tkinter.Scale(self.main, from_=0, to=10, resolution=0.1, variable = self.samp, length=250 ,tickinterval=1, orient="horizontal")
-        self.sampling.grid(row=4, column=1, sticky="W")
+        self.lSample = tkinter.Label(self.main, text = "Sampling:").grid(row=4, column=0, sticky="W")
+        self.sSample = tkinter.Scale(self.main, from_=0, to=10, resolution=0.1, variable = self.vSample, length=250 ,tickinterval=1, orient="horizontal")
+        self.sSample.grid(row=4, column=1, sticky="W")
 
-        self.fini = tkinter.Button(self.main, text = "Start", command = self.end)
-        self.fini.grid(row=7, columnspan=3)
+        self.bFinish = tkinter.Button(self.main, text = "Start", command = self.end)
+        self.bFinish.grid(row=7, columnspan=3)
 
 
     def chooseTracker(self):
-        self.trackerChoice = tkinter.Label(self.main, text = "Choose a Tracker:")
-        self.trackerChoice.grid(row=5, column=0, sticky="W")
+        self.lTracker = tkinter.Label(self.main, text = "Choose a Tracker:")
+        self.lTracker.grid(row=5, column=0, sticky="W")
 
-        self.trackerDLIB = tkinter.Radiobutton(self.main, text="dlib (Recommended)", variable = self.tracker, value = "dlib")
-        self.trackerDLIB.grid(row=5, column=1, sticky="W")
+        self.rTrackerDLIB = tkinter.Radiobutton(self.main, text="dlib (Recommended)", variable = self.vTracker, value = "dlib")
+        self.rTrackerDLIB.grid(row=5, column=1, sticky="W")
 
-        self.trackerOCV = tkinter.Radiobutton(self.main, text="OpenCV Haarecascade", variable = self.tracker, value = "ocv")
-        self.trackerOCV.grid(row=5, column=2, sticky="W")
+        self.rTrackerOVC = tkinter.Radiobutton(self.main, text="OpenCV Haarecascade", variable = self.vTracker, value = "ocv")
+        self.rTrackerOVC.grid(row=5, column=2, sticky="W")
 
     def chooseVisualize(self):
-        self.visualChoice = tkinter.Label(self.main, text = "Turn on the visualizer?")
-        self.visualChoice.grid(row=6, column=0, sticky="W")
+        self.lVisual = tkinter.Label(self.main, text = "Turn on the visualizer?")
+        self.lVisual.grid(row=6, column=0, sticky="W")
 
-        self.visualOn = tkinter.Radiobutton(self.main, text="Yes", variable = self.visual, value = True)
-        self.visualOn.grid(row=6, column=1, sticky="W")
+        self.rVisualOn = tkinter.Radiobutton(self.main, text="Yes", variable = self.vVisual, value = True)
+        self.rVisualOn.grid(row=6, column=1, sticky="W")
 
-        self.visualOff = tkinter.Radiobutton(self.main, text="No", variable = self.visual, value = False)
-        self.visualOff.grid(row=6, column=2, sticky="W")
+        self.rVisualOff = tkinter.Radiobutton(self.main, text="No", variable = self.vVisual, value = False)
+        self.rVisualOff.grid(row=6, column=2, sticky="W")
 
     def chooseInput(self):
         self.chooseDir = tkinter.Tk()
-        self.main.inputdir = filedialog.askopenfilename(title = "Select file", initialdir = "./input/", filetypes = ((".txt files","*.txt"),("all files","*.*")))
+        self.main.fInputFile = filedialog.askopenfilename(title = "Select file", initialdir = "./input/", filetypes = ((".txt files","*.txt"),("all files","*.*")))
         self.chooseDir.destroy()
 
     def getInput(self):
         self.mainWindow()
         self.main.mainloop()
-        self.folder_fin = self.folder.get() + "/"
-        return self.visual.get(), self.main.inputdir, self.folder_fin, self.thresh.get(), self.samp.get()
+        self.vOutputFolder_final = self.vOutputFolder.get() + "/"
+        return self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get()

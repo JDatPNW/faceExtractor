@@ -8,8 +8,8 @@ class guiInitializer(Initializer):
     def __init__(self):
         self.main = tkinter.Tk()
         self.main.title('FaceExtractor Config')
-        self.vTracker = tkinter.StringVar()
-        self.vTracker.set("dlib")
+        self.vTracker = tkinter.IntVar()
+        self.vTracker.set(0)
         self.vVisual = tkinter.BooleanVar()
         self.vVisual.set(False)
         self.vThresh = tkinter.DoubleVar()
@@ -52,10 +52,10 @@ class guiInitializer(Initializer):
         self.lTracker = tkinter.Label(self.main, text = "Choose a Tracker:")
         self.lTracker.grid(row=5, column=0, sticky="W")
 
-        self.rTrackerDLIB = tkinter.Radiobutton(self.main, text="dlib (Recommended)", variable = self.vTracker, value = "dlib")
+        self.rTrackerDLIB = tkinter.Radiobutton(self.main, text="dlib (Recommended)", variable = self.vTracker, value = 1)
         self.rTrackerDLIB.grid(row=5, column=1, sticky="W")
 
-        self.rTrackerOVC = tkinter.Radiobutton(self.main, text="OpenCV Haarecascade", variable = self.vTracker, value = "ocv")
+        self.rTrackerOVC = tkinter.Radiobutton(self.main, text="OpenCV Haarecascade", variable = self.vTracker, value = 0)
         self.rTrackerOVC.grid(row=5, column=2, sticky="W")
 
     def chooseVisualize(self):
@@ -77,4 +77,4 @@ class guiInitializer(Initializer):
         self.mainWindow()
         self.main.mainloop()
         self.vOutputFolder_final = self.vOutputFolder.get() + "/"
-        return self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get()
+        return self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get(), self.vTracker.get()

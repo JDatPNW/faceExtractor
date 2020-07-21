@@ -5,6 +5,10 @@ class Visualizer:
     def __init__(self, vis):
         self.visualize = vis
 
+    def setupWindow(self):
+        if(self.visualize==1):
+            cv2.namedWindow('FaceExtractor Video Feed', cv2.WINDOW_NORMAL)
+
     def displayVideo(self, frame):
         if(self.visualize==1):
             cv2.imshow('FaceExtractor Video Feed',numpy.array(frame, dtype = numpy.uint8))

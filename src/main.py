@@ -6,6 +6,8 @@ from .Tracker import Tracker
 from .dlibTracker import dlibTracker
 from .ocvTracker import ocvTracker
 from .Logger import Logger
+from .guiLogger import guiLogger
+from .cliLogger import cliLogger
 from .clInitializer import clInitializer
 from .guiInitializer import guiInitializer
 import os, cv2
@@ -14,14 +16,16 @@ import os, cv2
 
 class Main:
     def main(self):
-
         init = guiInitializer()
-        visualize, inputfile, experiment, threshold, sampling = init.getInput()
+        visualize, inputfile, experiment, threshold, sampling, tracker = init.getInput()
         vis = Visualizer(visualize)
-        log = Logger()
+        log = guiLogger()
         load =  Loader()
         arch = Archiver()
-        track = dlibTracker()
+        if(int(tracker)==0):
+            track = dlibTracker()
+        else:
+            track = ocvTracker()
         track.initTracker()
 
         file = load.loadList(inputfile)
@@ -34,6 +38,7 @@ class Main:
             cap, best = load.loadStream(url)
             cap.open(best) #cap.open("./new_a/%05d.jpg") THIS WORKS FOR IMAGES!! need to only return the path in class
             num = 0;
+            vis.setupWindow()
             if not os.path.exists(dir):
                 os.makedirs(dir)
                 while(cap.isOpened()):
@@ -52,9 +57,10 @@ class Main:
                             break
                     else:
                         break
-            vis.closeWindows()
             cap.release()
-
+            vis.closeWindows()
             print("#######################################")
             print("          Video {} done!               ".format(vidid))
             print("#######################################")
+
+        log.end()

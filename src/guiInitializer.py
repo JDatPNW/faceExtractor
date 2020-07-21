@@ -9,7 +9,7 @@ class guiInitializer(Initializer):
         self.main = tkinter.Tk()
         self.main.title('FaceExtractor Config')
         self.vTracker = tkinter.IntVar()
-        self.vTracker.set(0)
+        self.vTracker.set(1)
         self.vVisual = tkinter.BooleanVar()
         self.vVisual.set(False)
         self.vThresh = tkinter.DoubleVar()

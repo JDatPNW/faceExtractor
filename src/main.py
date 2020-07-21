@@ -1,4 +1,6 @@
 from .Visualizer import Visualizer
+from .ocvVisualizer import ocvVisualizer
+from .guiVisualizer import guiVisualizer
 from .Loader import Loader
 from .Initializer import Initializer
 from .Archiver import Archiver
@@ -18,11 +20,11 @@ class Main:
     def main(self):
         init = guiInitializer()
         visualize, inputfile, experiment, threshold, sampling, tracker = init.getInput()
-        vis = Visualizer(visualize)
         log = guiLogger()
+        vis = guiVisualizer(visualize, log)
         load =  Loader()
         arch = Archiver()
-        if(int(tracker)==0):
+        if(int(tracker)==1):
             track = dlibTracker()
         else:
             track = ocvTracker()

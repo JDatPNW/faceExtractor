@@ -27,7 +27,7 @@ class guiLogger(Logger):
         self.rAutoScrollOff = tkinter.Radiobutton(self.mainLog, text="No", variable = self.vAutoScroll, value = False)
         self.rAutoScrollOff.grid(row=1, column=2, sticky="W")
 
-        self.tOutputField = tkinter.Text(self.mainLog, height=20, width=125,  wrap=tkinter.NONE, yscrollcommand=self.scroll.set)
+        self.tOutputField = tkinter.Text(self.mainLog, height=20, width=75,  wrap=tkinter.NONE, yscrollcommand=self.scroll.set)
         self.scroll.config(command=self.tOutputField.yview)
         self.tOutputField.grid(row=2,columnspan=3)
 

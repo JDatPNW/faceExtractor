@@ -18,7 +18,7 @@ class clInitializer(Initializer):
 
         self.sampling = input('Enter sampling: ') #1 works well
 
-        self.tracker = input('Choose between dlib[0 - Recommended] and cv2[1] tracking: ') #1 works well
+        self.tracker = input('Choose between dlib[1 - Recommended] and cv2[0] tracking: ') #1 works well
 
 
         return self.visualize, self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker

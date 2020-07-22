@@ -35,4 +35,6 @@ class clInitializer(Initializer):
         self.visualizer = input(
             'Choose between the cv2[1 - fatser] and GUI[0] Visualizer: ')  # 1 works well
 
-        return self.visualize, self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker, self.logger, self.visualizer, self.loader
+        return (self.visualize,
+                self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker,
+                self.logger, self.visualizer, self.loader)

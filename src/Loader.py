@@ -1,7 +1,3 @@
-import cv2
-import pafy
-
-
 class Loader:
 
     def loadList(self, inputfile):

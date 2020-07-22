@@ -138,4 +138,6 @@ class guiInitializer(Initializer):
         self.mainWindow()
         self.main.mainloop()
         self.vOutputFolder_final = self.vOutputFolder.get() + "/"
-        return (self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get(), self.vTracker.get(), self.vLogger.get(), self.vVisualizer.get(), self.vLoader.get())
+        return (self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final,
+                self.vThresh.get(), self.vSample.get(), self.vTracker.get(), self.vLogger.get(),
+                self.vVisualizer.get(), self.vLoader.get())

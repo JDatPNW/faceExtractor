@@ -1,5 +1,7 @@
-import dlib, cv2
+import dlib
+import cv2
 from .Tracker import Tracker
+
 
 class dlibTracker(Tracker):
     def __init__(self):
@@ -8,11 +10,11 @@ class dlibTracker(Tracker):
     def initTracker(self):
         self.detector = dlib.get_frontal_face_detector()
 
-
     def detectFaces(self, frame, sampling, threshold):
         self.coords = ()
         self.coordsList = []
-        self.dets, self.scores, self.idx = self.detector.run(frame, int(sampling), float(threshold))
+        self.dets, self.scores, self.idx = self.detector.run(
+            frame, int(sampling), float(threshold))
         for i, d in enumerate(self.dets):
             self.coords = ((d.left(), d.top()), (d.right(), d.bottom()))
             self.coordsList.append(self.coords)

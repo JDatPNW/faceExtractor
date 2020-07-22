@@ -1,4 +1,7 @@
-import cv2, pafy, os
+import cv2
+import pafy
+import os
+
 
 class Loader:
 
@@ -15,4 +18,4 @@ class Loader:
     def getFileLength(self, file):
         for i, l in enumerate(file):
             pass
-        return i+1
+        return i + 1

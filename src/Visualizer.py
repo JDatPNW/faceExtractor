@@ -1,4 +1,6 @@
-import numpy, cv2
+import numpy
+import cv2
+
 
 class Visualizer:
 

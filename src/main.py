@@ -12,19 +12,26 @@ from .guiLogger import guiLogger
 from .cliLogger import cliLogger
 from .clInitializer import clInitializer
 from .guiInitializer import guiInitializer
-import os, cv2
-
+import os
+import cv2
 
 
 class Main:
+    def __init__(self, mode):
+        self.mode = mode
+
     def main(self):
-        init = guiInitializer()
+        if(self.mode == "gui"):
+            init = guiInitializer()
+        else:
+            init = clInitializer()
+
         visualize, inputfile, experiment, threshold, sampling, tracker = init.getInput()
         log = guiLogger()
         vis = guiVisualizer(visualize, log)
-        load =  Loader()
+        load = Loader()
         arch = Archiver()
-        if(int(tracker)==1):
+        if(int(tracker) == 1):
             track = dlibTracker()
         else:
             track = ocvTracker()
@@ -35,25 +42,29 @@ class Main:
         filelength = load.getFileLength(file)
         file.seek(0)
         for line in file:
-            vidid = vidid+1
+            vidid = vidid + 1
             dir, url = arch.getCurrentDir(line, experiment)
             cap, best = load.loadStream(url)
-            cap.open(best) #cap.open("./new_a/%05d.jpg") THIS WORKS FOR IMAGES!! need to only return the path in class
-            num = 0;
+            # cap.open("./new_a/%05d.jpg") THIS WORKS FOR IMAGES!! need to only return the path in class
+            cap.open(best)
+            num = 0
             vis.setupWindow()
             if not os.path.exists(dir):
                 os.makedirs(dir)
                 while(cap.isOpened()):
-                    ret,frame = cap.read()
-                    if (ret==True):
-                        dets, scores, idx = track.detectFaces(frame, sampling, threshold)
-                        log.logNumFaces(dets, (cap.get(cv2.CAP_PROP_POS_FRAMES)/ cap.get(cv2.CAP_PROP_FRAME_COUNT)), vidid, filelength)
+                    ret, frame = cap.read()
+                    if (ret is True):
+                        dets, scores, idx = track.detectFaces(
+                            frame, sampling, threshold)
+                        log.logNumFaces(dets, (cap.get(
+                            cv2.CAP_PROP_POS_FRAMES) / cap.get(cv2.CAP_PROP_FRAME_COUNT)), vidid, filelength)
                         for i, d in enumerate(dets):
-                            log.logFaceCoordinates(i, d, scores, idx, visualize)
+                            log.logFaceCoordinates(
+                                i, d, scores, idx, visualize)
                             crop_img_re = arch.cropAndResize(frame, i, d)
                             arch.saveImg(dir, num, scores[i], crop_img_re, d)
                             vis.highlightFaces(frame, d)
-                            num = num+1
+                            num = num + 1
                         stop = vis.displayVideo(frame)
                         if(stop):
                             break

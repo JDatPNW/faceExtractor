@@ -3,7 +3,8 @@ from .guiVisualizer import guiVisualizer
 from .imgLoader import imgLoader
 from .vidLoader import vidLoader
 from .ytLoader import ytLoader
-from .Archiver import Archiver
+from .jpgArchiver import jpgArchiver
+from .csvArchiver import csvArchiver
 from .dlibTracker import dlibTracker
 from .ocvTracker import ocvTracker
 from .guiLogger import guiLogger
@@ -25,7 +26,7 @@ class Main:
         else:
             init = clInitializer()
 
-        visualize, inputfile, experiment, threshold, sampling, tracker, logger, visualizer, loader = init.getInput()
+        visualize, inputfile, experiment, threshold, sampling, tracker, logger, visualizer, loader, archiver = init.getInput()
 
         if(int(logger) == 1):
             log = cliLogger()
@@ -43,8 +44,11 @@ class Main:
             load = vidLoader()
         else:
             load = ytLoader()
+        if(int(archiver) == 0):
+            arch = csvArchiver()
+        else:
+            arch = jpgArchiver()
 
-        arch = Archiver()
         if(int(tracker) == 1):
             track = dlibTracker()
         else:
@@ -86,6 +90,7 @@ class Main:
                         break
             cap.release()
             vis.closeWindows()
+            arch.closeArchiver()
             print("#######################################")
             print("          Video {} done!               ".format(vidid))
             print("#######################################")

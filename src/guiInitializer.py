@@ -18,6 +18,8 @@ class guiInitializer(Initializer):
         self.vLogger.set(True)
         self.vVisualizer = tkinter.BooleanVar()
         self.vVisualizer.set(True)
+        self.vArchiver = tkinter.BooleanVar()
+        self.vArchiver.set(True)
         self.vLoader = tkinter.IntVar()
         self.vLoader.set(0)
         self.vThresh = tkinter.DoubleVar()
@@ -51,7 +53,7 @@ class guiInitializer(Initializer):
         self.chooseLoader()
         self.chooseVisualize()
         self.chooseVisualizer()
-
+        self.chooseArchiver()
         self.lThreshold = tkinter.Label(
             self.main, text="Threshold:").grid(row=3, column=0, sticky="W")
         self.sThreshold = tkinter.Scale(self.main, from_=0, to=10, resolution=0.1,
@@ -66,7 +68,7 @@ class guiInitializer(Initializer):
 
         self.bFinish = tkinter.Button(
             self.main, text="Start", command=self.end)
-        self.bFinish.grid(row=10, columnspan=3)
+        self.bFinish.grid(row=11, columnspan=3)
 
     def chooseTracker(self):
         self.lTracker = tkinter.Label(self.main, text="Choose a Tracker:")
@@ -97,17 +99,29 @@ class guiInitializer(Initializer):
             self.main, text="What type of files do you want to load?:")
         self.lLoader.grid(row=7, column=0, sticky="W")
 
-        self.rLoaderCL = tkinter.Radiobutton(
+        self.rLoaderYT = tkinter.Radiobutton(
             self.main, text="YouTube Video", variable=self.vLoader, value=0)
-        self.rLoaderCL.grid(row=7, column=1, sticky="W")
+        self.rLoaderYT.grid(row=7, column=1, sticky="W")
 
-        self.rLoaderGUI = tkinter.Radiobutton(
+        self.rLoaderIMG = tkinter.Radiobutton(
             self.main, text="Images", variable=self.vLoader, value=1)
-        self.rLoaderGUI.grid(row=7, column=2, sticky="W")
+        self.rLoaderIMG.grid(row=7, column=2, sticky="W")
 
-        self.rLoaderGUI = tkinter.Radiobutton(
+        self.rLoaderVID = tkinter.Radiobutton(
             self.main, text="Local Video", variable=self.vLoader, value=2)
-        self.rLoaderGUI.grid(row=7, column=3, sticky="W")
+        self.rLoaderVID.grid(row=7, column=3, sticky="W")
+
+    def chooseArchiver(self):
+        self.lArchiver = tkinter.Label(self.main, text="Choose how to safe the output:")
+        self.lArchiver.grid(row=10, column=0, sticky="W")
+
+        self.lArchiverJPG = tkinter.Radiobutton(
+            self.main, text=".jpg", variable=self.vArchiver, value=1)
+        self.lArchiverJPG.grid(row=10, column=1, sticky="W")
+
+        self.lArchiverCSV = tkinter.Radiobutton(
+            self.main, text=".csv", variable=self.vArchiver, value=0)
+        self.lArchiverCSV.grid(row=10, column=2, sticky="W")
 
     def chooseVisualize(self):
         self.lVisual = tkinter.Label(self.main, text="Turn on the visualizer?")
@@ -136,7 +150,7 @@ class guiInitializer(Initializer):
 
     def chooseInput(self):
         self.main.fInputFile = filedialog.askopenfilename(
-            title="Select file", initialdir="./input/", filetypes=((".txt files", "*.txt"), ("all files", "*.*")))
+            title="Select file", initialdir="./input/", filetypes=(("all files", "*.*"), (".txt files", "*.txt"), (".mp4 files", "*.mp4")))
 
     def getInput(self):
         self.mainWindow()
@@ -144,4 +158,4 @@ class guiInitializer(Initializer):
         self.vOutputFolder_final = self.vOutputFolder.get() + "/"
         return (self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final,
                 self.vThresh.get(), self.vSample.get(), self.vTracker.get(), self.vLogger.get(),
-                self.vVisualizer.get(), self.vLoader.get())
+                self.vVisualizer.get(), self.vLoader.get(), self.vArchiver.get())

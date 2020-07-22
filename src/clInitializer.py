@@ -35,6 +35,9 @@ class clInitializer(Initializer):
         self.visualizer = input(
             'Choose between the cv2[1 - fatser] and GUI[0] Visualizer: ')  # 1 works well
 
+        self.archiver = input(
+            'Do you want to safe the results as a .jpg[1] or as a .csv[0]: ')  # 1 works well
+
         return (self.visualize,
                 self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker,
-                self.logger, self.visualizer, self.loader)
+                self.logger, self.visualizer, self.loader, self.archiver)

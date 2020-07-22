@@ -1,6 +1,5 @@
 import cv2
 import pafy
-import os
 
 
 class Loader:

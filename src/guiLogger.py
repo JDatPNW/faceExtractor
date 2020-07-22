@@ -1,6 +1,6 @@
 import tkinter
-from tkinter import filedialog
 from .Logger import Logger
+# from tkinter import filedialog
 
 
 class guiLogger(Logger):

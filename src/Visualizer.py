@@ -1,7 +1,3 @@
-import numpy
-import cv2
-
-
 class Visualizer:
 
     def __init__(self, vis, log):

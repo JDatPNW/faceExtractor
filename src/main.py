@@ -1,13 +1,9 @@
-from .Visualizer import Visualizer
 from .ocvVisualizer import ocvVisualizer
 from .guiVisualizer import guiVisualizer
 from .Loader import Loader
-from .Initializer import Initializer
 from .Archiver import Archiver
-from .Tracker import Tracker
 from .dlibTracker import dlibTracker
 from .ocvTracker import ocvTracker
-from .Logger import Logger
 from .guiLogger import guiLogger
 from .cliLogger import cliLogger
 from .clInitializer import clInitializer
@@ -27,8 +23,14 @@ class Main:
             init = clInitializer()
 
         visualize, inputfile, experiment, threshold, sampling, tracker = init.getInput()
-        log = guiLogger()
-        vis = guiVisualizer(visualize, log)
+        if(True):
+            log = cliLogger()
+        else:
+            log = guiLogger()
+        if(True):
+            vis = guiVisualizer(visualize, log)
+        else:
+            vis = ocvVisualizer(visualize, log)
         load = Loader()
         arch = Archiver()
         if(int(tracker) == 1):

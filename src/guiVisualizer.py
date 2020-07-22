@@ -1,9 +1,7 @@
-import numpy
 import cv2
 import PIL
-from PIL import ImageTk, Image
+from PIL import ImageTk
 import tkinter
-import cv2
 from .Visualizer import Visualizer
 
 

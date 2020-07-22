@@ -1,5 +1,4 @@
 import dlib
-import cv2
 from .Tracker import Tracker
 
 

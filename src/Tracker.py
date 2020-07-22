@@ -1,7 +1,3 @@
-import dlib
-import cv2
-
-
 class Tracker:
     def __init__(self):
         pass

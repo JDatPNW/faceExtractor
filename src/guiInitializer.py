@@ -14,6 +14,10 @@ class guiInitializer(Initializer):
         self.vTracker.set(1)
         self.vVisual = tkinter.BooleanVar()
         self.vVisual.set(False)
+        self.vLogger = tkinter.BooleanVar()
+        self.vLogger.set(False)
+        self.vVisualizer = tkinter.BooleanVar()
+        self.vVisualizer.set(False)
         self.vThresh = tkinter.DoubleVar()
         self.vThresh.set(1.0)
         self.vSample = tkinter.DoubleVar()
@@ -41,7 +45,9 @@ class guiInitializer(Initializer):
         self.eOutputFolder.grid(row=2, column=1, sticky="W")
 
         self.chooseTracker()
+        self.chooseLogger()
         self.chooseVisualize()
+        self.chooseVisualizer()
 
         self.lThreshold = tkinter.Label(
             self.main, text="Threshold:").grid(row=3, column=0, sticky="W")
@@ -57,7 +63,7 @@ class guiInitializer(Initializer):
 
         self.bFinish = tkinter.Button(
             self.main, text="Start", command=self.end)
-        self.bFinish.grid(row=7, columnspan=3)
+        self.bFinish.grid(row=9, columnspan=3)
 
     def chooseTracker(self):
         self.lTracker = tkinter.Label(self.main, text="Choose a Tracker:")
@@ -71,17 +77,41 @@ class guiInitializer(Initializer):
             self.main, text="OpenCV Haarecascade", variable=self.vTracker, value=0)
         self.rTrackerOVC.grid(row=5, column=2, sticky="W")
 
+    def chooseLogger(self):
+        self.lLogger = tkinter.Label(self.main, text="Choose a Logger:")
+        self.lLogger.grid(row=6, column=0, sticky="W")
+
+        self.rLoggerCL = tkinter.Radiobutton(
+            self.main, text="Command Line (faster)", variable=self.vLogger, value=1)
+        self.rLoggerCL.grid(row=6, column=1, sticky="W")
+
+        self.rLoggerGUI = tkinter.Radiobutton(
+            self.main, text="GUI", variable=self.vLogger, value=0)
+        self.rLoggerGUI.grid(row=6, column=2, sticky="W")
+
     def chooseVisualize(self):
         self.lVisual = tkinter.Label(self.main, text="Turn on the visualizer?")
-        self.lVisual.grid(row=6, column=0, sticky="W")
+        self.lVisual.grid(row=7, column=0, sticky="W")
 
         self.rVisualOn = tkinter.Radiobutton(
             self.main, text="Yes", variable=self.vVisual, value=True)
-        self.rVisualOn.grid(row=6, column=1, sticky="W")
+        self.rVisualOn.grid(row=7, column=1, sticky="W")
 
         self.rVisualOff = tkinter.Radiobutton(
-            self.main, text="No", variable=self.vVisual, value=False)
-        self.rVisualOff.grid(row=6, column=2, sticky="W")
+            self.main, text="No (faster)", variable=self.vVisual, value=False)
+        self.rVisualOff.grid(row=7, column=2, sticky="W")
+
+    def chooseVisualizer(self):
+        self.lVisualizer = tkinter.Label(self.main, text="Choose a Visualizer:")
+        self.lVisualizer.grid(row=8, column=0, sticky="W")
+
+        self.rVisualizerOCV = tkinter.Radiobutton(
+            self.main, text="OpenCV (Faster)", variable=self.vVisualizer, value=1)
+        self.rVisualizerOCV.grid(row=8, column=1, sticky="W")
+
+        self.rVisualizerGUI = tkinter.Radiobutton(
+            self.main, text="GUI", variable=self.vVisualizer, value=0)
+        self.rVisualizerGUI.grid(row=8, column=2, sticky="W")
 
     def chooseInput(self):
         self.chooseDir = tkinter.Tk()

@@ -53,6 +53,7 @@ class Main:
             track = dlibTracker()
         else:
             track = ocvTracker()
+            
         track.initTracker()
 
         file = load.loadList(inputfile)

@@ -22,15 +22,17 @@ class Main:
         else:
             init = clInitializer()
 
-        visualize, inputfile, experiment, threshold, sampling, tracker = init.getInput()
-        if(True):
+        visualize, inputfile, experiment, threshold, sampling, tracker, logger, visualizer = init.getInput()
+        if(int(logger) == 1):
             log = cliLogger()
         else:
             log = guiLogger()
-        if(True):
-            vis = guiVisualizer(visualize, log)
-        else:
+
+        if(int(visualizer) == 1):
             vis = ocvVisualizer(visualize, log)
+        else:
+            vis = guiVisualizer(visualize, log)
+
         load = Loader()
         arch = Archiver()
         if(int(tracker) == 1):

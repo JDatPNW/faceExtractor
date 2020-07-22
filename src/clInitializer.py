@@ -23,7 +23,13 @@ class clInitializer(Initializer):
 
         self.sampling = input('Enter sampling: ')  # 1 works well
 
+        self.logger = input(
+            'Choose between Command Line Logging[1 - faster] and GUI Logging[0]: ')  # 1 works well
+
         self.tracker = input(
             'Choose between dlib[1 - Recommended] and cv2[0] tracking: ')  # 1 works well
 
-        return self.visualize, self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker
+        self.visualizer = input(
+            'Choose between the cv2[1 - fatser] and GUI[0] Visualizer: ')  # 1 works well
+
+        return self.visualize, self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker, self.logger, self.visualizer

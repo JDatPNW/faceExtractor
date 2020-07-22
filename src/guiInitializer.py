@@ -15,9 +15,9 @@ class guiInitializer(Initializer):
         self.vVisual = tkinter.BooleanVar()
         self.vVisual.set(False)
         self.vLogger = tkinter.BooleanVar()
-        self.vLogger.set(False)
+        self.vLogger.set(True)
         self.vVisualizer = tkinter.BooleanVar()
-        self.vVisualizer.set(False)
+        self.vVisualizer.set(True)
         self.vThresh = tkinter.DoubleVar()
         self.vThresh.set(1.0)
         self.vSample = tkinter.DoubleVar()
@@ -123,4 +123,4 @@ class guiInitializer(Initializer):
         self.mainWindow()
         self.main.mainloop()
         self.vOutputFolder_final = self.vOutputFolder.get() + "/"
-        return self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get(), self.vTracker.get()
+        return self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get(), self.vTracker.get(), self.vLogger.get(), self.vVisualizer.get()

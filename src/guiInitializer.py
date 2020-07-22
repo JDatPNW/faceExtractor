@@ -8,6 +8,7 @@ class guiInitializer(Initializer):
     def __init__(self):
         self.main = tkinter.Tk()
         self.main.title('FaceExtractor Config')
+        self.main.iconphoto(True, tkinter.PhotoImage(file="./src/imgs/icon.png"))
         self.vTracker = tkinter.IntVar()
         self.vTracker.set(1)
         self.vVisual = tkinter.BooleanVar()

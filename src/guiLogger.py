@@ -5,6 +5,7 @@ from .Logger import Logger
 class guiLogger(Logger):
     def __init__(self):
         self.mainLog = tkinter.Tk()
+        self.mainLog.iconphoto(True, tkinter.PhotoImage(file="./src/imgs/icon.png"))
         self.mainLog.title('FaceExtractor Logger')
         self.vAutoScroll = tkinter.BooleanVar()
         self.vAutoScroll.set(True)

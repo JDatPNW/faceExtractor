@@ -8,6 +8,9 @@ Notes
 devNotes
 in
 src/__pycache__
+faceTrack.spec
+dist
+__pycache__
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

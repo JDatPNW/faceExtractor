@@ -14,10 +14,12 @@ class guiInitializer(Initializer):
         self.vTracker.set(1)
         self.vVisual = tkinter.BooleanVar()
         self.vVisual.set(False)
-        self.vLogger = tkinter.BooleanVar()
+        self.vLogger = tkinter.IntVar()
         self.vLogger.set(True)
         self.vVisualizer = tkinter.BooleanVar()
         self.vVisualizer.set(True)
+        self.vLoader = tkinter.BooleanVar()
+        self.vLoader.set(0)
         self.vThresh = tkinter.DoubleVar()
         self.vThresh.set(1.0)
         self.vSample = tkinter.DoubleVar()
@@ -46,6 +48,7 @@ class guiInitializer(Initializer):
 
         self.chooseTracker()
         self.chooseLogger()
+        self.chooseLoader()
         self.chooseVisualize()
         self.chooseVisualizer()
 
@@ -63,7 +66,7 @@ class guiInitializer(Initializer):
 
         self.bFinish = tkinter.Button(
             self.main, text="Start", command=self.end)
-        self.bFinish.grid(row=9, columnspan=3)
+        self.bFinish.grid(row=10, columnspan=3)
 
     def chooseTracker(self):
         self.lTracker = tkinter.Label(self.main, text="Choose a Tracker:")
@@ -89,38 +92,50 @@ class guiInitializer(Initializer):
             self.main, text="GUI", variable=self.vLogger, value=0)
         self.rLoggerGUI.grid(row=6, column=2, sticky="W")
 
+    def chooseLoader(self):
+        self.lLoader = tkinter.Label(
+            self.main, text="What type of files do you want to load?:")
+        self.lLoader.grid(row=7, column=0, sticky="W")
+
+        self.rLoaderCL = tkinter.Radiobutton(
+            self.main, text="YouTube Video", variable=self.vLoader, value=0)
+        self.rLoaderCL.grid(row=7, column=1, sticky="W")
+
+        self.rLoaderGUI = tkinter.Radiobutton(
+            self.main, text="Images", variable=self.vLoader, value=1)
+        self.rLoaderGUI.grid(row=7, column=2, sticky="W")
+
     def chooseVisualize(self):
         self.lVisual = tkinter.Label(self.main, text="Turn on the visualizer?")
-        self.lVisual.grid(row=7, column=0, sticky="W")
+        self.lVisual.grid(row=8, column=0, sticky="W")
 
         self.rVisualOn = tkinter.Radiobutton(
             self.main, text="Yes", variable=self.vVisual, value=True)
-        self.rVisualOn.grid(row=7, column=1, sticky="W")
+        self.rVisualOn.grid(row=8, column=1, sticky="W")
 
         self.rVisualOff = tkinter.Radiobutton(
             self.main, text="No (faster)", variable=self.vVisual, value=False)
-        self.rVisualOff.grid(row=7, column=2, sticky="W")
+        self.rVisualOff.grid(row=8, column=2, sticky="W")
 
     def chooseVisualizer(self):
-        self.lVisualizer = tkinter.Label(self.main, text="Choose a Visualizer:")
-        self.lVisualizer.grid(row=8, column=0, sticky="W")
+        self.lVisualizer = tkinter.Label(
+            self.main, text="Choose a Visualizer:")
+        self.lVisualizer.grid(row=9, column=0, sticky="W")
 
         self.rVisualizerOCV = tkinter.Radiobutton(
             self.main, text="OpenCV (Faster)", variable=self.vVisualizer, value=1)
-        self.rVisualizerOCV.grid(row=8, column=1, sticky="W")
+        self.rVisualizerOCV.grid(row=9, column=1, sticky="W")
 
         self.rVisualizerGUI = tkinter.Radiobutton(
             self.main, text="GUI", variable=self.vVisualizer, value=0)
-        self.rVisualizerGUI.grid(row=8, column=2, sticky="W")
+        self.rVisualizerGUI.grid(row=9, column=2, sticky="W")
 
     def chooseInput(self):
-        self.chooseDir = tkinter.Tk()
         self.main.fInputFile = filedialog.askopenfilename(
             title="Select file", initialdir="./input/", filetypes=((".txt files", "*.txt"), ("all files", "*.*")))
-        self.chooseDir.destroy()
 
     def getInput(self):
         self.mainWindow()
         self.main.mainloop()
         self.vOutputFolder_final = self.vOutputFolder.get() + "/"
-        return self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get(), self.vTracker.get(), self.vLogger.get(), self.vVisualizer.get()
+        return (self.vVisual.get(), self.main.fInputFile, self.vOutputFolder_final, self.vThresh.get(), self.vSample.get(), self.vTracker.get(), self.vLogger.get(), self.vVisualizer.get(), self.vLoader.get())

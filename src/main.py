@@ -1,6 +1,7 @@
 from .ocvVisualizer import ocvVisualizer
 from .guiVisualizer import guiVisualizer
-from .Loader import Loader
+from .imgLoader import imgLoader
+from .ytLoader import ytLoader
 from .Archiver import Archiver
 from .dlibTracker import dlibTracker
 from .ocvTracker import ocvTracker
@@ -17,12 +18,14 @@ class Main:
         self.mode = mode
 
     def main(self):
+
         if(self.mode == "gui"):
             init = guiInitializer()
         else:
             init = clInitializer()
 
-        visualize, inputfile, experiment, threshold, sampling, tracker, logger, visualizer = init.getInput()
+        visualize, inputfile, experiment, threshold, sampling, tracker, logger, visualizer, loader = init.getInput()
+
         if(int(logger) == 1):
             log = cliLogger()
         else:
@@ -33,7 +36,11 @@ class Main:
         else:
             vis = guiVisualizer(visualize, log)
 
-        load = Loader()
+        if(int(loader) == 1):
+            load = imgLoader()
+        else:
+            load = ytLoader()
+
         arch = Archiver()
         if(int(tracker) == 1):
             track = dlibTracker()
@@ -44,12 +51,12 @@ class Main:
         file = load.loadList(inputfile)
         vidid = 0
         filelength = load.getFileLength(file)
-        file.seek(0)
+        if(loader == 0):
+            file.seek(0)
         for line in file:
             vidid = vidid + 1
-            dir, url = arch.getCurrentDir(line, experiment)
+            dir, url = arch.getCurrentDir(line, experiment, loader)
             cap, best = load.loadStream(url)
-            # cap.open("./new_a/%05d.jpg") THIS WORKS FOR IMAGES!! need to only return the path in class
             cap.open(best)
             num = 0
             vis.setupWindow()

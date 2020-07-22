@@ -17,9 +17,12 @@ class Archiver:
             self.crop_img_re = cv2.resize(self.crop_img, (48, 48))
             return self.crop_img_re
 
-    def getCurrentDir(self, line, experiment):
+    def getCurrentDir(self, line, experiment, loader):
         url = line
-        folder = re.findall("[^\=]*$", url)
-        folder = folder[0]
-        dir = "results/" + experiment + folder
+        if(int(loader) == 0):
+            folder = re.findall("[^\=]*$", url)
+            folder = folder[0]
+            dir = "results/" + experiment + folder
+        else:
+            dir = "results/" + experiment + "imageStream"
         return dir, url

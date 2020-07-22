@@ -23,6 +23,8 @@ class Archiver:
             folder = re.findall("[^\=]*$", url)
             folder = folder[0]
             dir = "results/" + experiment + folder
-        else:
+        elif(int(loader == 1)):
             dir = "results/" + experiment + "imageStream"
+        elif(int(loader == 2)):
+            dir = "results/" + experiment + "videoStream"
         return dir, url

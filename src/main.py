@@ -1,6 +1,7 @@
 from .ocvVisualizer import ocvVisualizer
 from .guiVisualizer import guiVisualizer
 from .imgLoader import imgLoader
+from .vidLoader import vidLoader
 from .ytLoader import ytLoader
 from .Archiver import Archiver
 from .dlibTracker import dlibTracker
@@ -38,6 +39,8 @@ class Main:
 
         if(int(loader) == 1):
             load = imgLoader()
+        elif(int(loader) == 2):
+            load = vidLoader()
         else:
             load = ytLoader()
 

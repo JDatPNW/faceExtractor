@@ -14,11 +14,11 @@ class guiInitializer(Initializer):
         self.vTracker.set(1)
         self.vVisual = tkinter.BooleanVar()
         self.vVisual.set(False)
-        self.vLogger = tkinter.IntVar()
+        self.vLogger = tkinter.BooleanVar()
         self.vLogger.set(True)
         self.vVisualizer = tkinter.BooleanVar()
         self.vVisualizer.set(True)
-        self.vLoader = tkinter.BooleanVar()
+        self.vLoader = tkinter.IntVar()
         self.vLoader.set(0)
         self.vThresh = tkinter.DoubleVar()
         self.vThresh.set(1.0)
@@ -104,6 +104,10 @@ class guiInitializer(Initializer):
         self.rLoaderGUI = tkinter.Radiobutton(
             self.main, text="Images", variable=self.vLoader, value=1)
         self.rLoaderGUI.grid(row=7, column=2, sticky="W")
+
+        self.rLoaderGUI = tkinter.Radiobutton(
+            self.main, text="Local Video", variable=self.vLoader, value=2)
+        self.rLoaderGUI.grid(row=7, column=3, sticky="W")
 
     def chooseVisualize(self):
         self.lVisual = tkinter.Label(self.main, text="Turn on the visualizer?")

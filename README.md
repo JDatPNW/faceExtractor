@@ -1,5 +1,4 @@
-![](https://github.com/JDatPNW/faceExtractor/blob/master/src/imgs/icon.ico)
-# faceTrack
+# _![](https://github.com/JDatPNW/faceExtractor/blob/master/src/imgs/icon.ico)_ faceTrack
 A framework which allows to collect data (faces) for machine- and  deep-learning algorithms, from:
 * YouTube videos
 * Images (all in 1 folder)

@@ -11,6 +11,8 @@ class ocvTracker(Tracker):
             './src/haarcascades/haarcascade_frontalface_alt.xml')
 
     def detectFaces(self, frame, sampling, threshold):
+        if(threshold < 1.1):
+            threshold = 1.1
         self.coords = ()
         self.coordsList = []
         self.scores = []

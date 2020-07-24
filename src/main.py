@@ -59,7 +59,7 @@ class Main:
         file = load.loadList(inputfile)
         vidid = 0
         filelength = load.getFileLength(file)
-        if(loader == 0):
+        if(int(loader) == 0):
             file.seek(0)
         for line in file:
             vidid = vidid + 1

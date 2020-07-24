@@ -38,54 +38,54 @@ class clInitializer(Initializer):
         self.archiver = input(
             'Do you want to safe the results as a .jpg[1] or as a .csv[0]: ')  # 1 works well
 
-        if(self.visualize < 0):
+        if(int(self.visualize < 0)):
             self.visualize = 0
-        elif(self.visualize > 0 and self.visualize < 1):
+        elif(int(self.visualize) > 0 and int(self.visualize) < 1):
             self.visualize = 1
-        elif(self.visualize > 1):
+        elif(int(self.visualize) > 1):
             self.visualize = 1
 
-        if(self.threshold < 0):
+        if(int(self.threshold) < 0):
             self.threshold = 0
 
-        if(self.sampling < 0):
+        if(int(self.sampling) < 0):
             self.sampling = 0
 
-        if(self.loader < 0):
+        if(int(self.loader) < 0):
             self.loader = 0
-        elif(self.loader > 0 and self.loader < 1):
+        elif(int(self.loader) > 0 and int(self.loader) < 1):
             self.loader = 1
-        elif(self.loader > 1 and self.loader < 2):
+        elif(int(self.loader) > 1 and int(self.loader) < 2):
             self.loader = 1
-        elif(self.loader > 2):
+        elif(int(self.loader) > 2):
             self.loader = 2
 
-        if(self.logger < 0):
+        if(int(self.logger) < 0):
             self.logger = 0
-        elif(self.logger > 0 and self.logger < 1):
+        elif(int(self.logger) > 0 and int(self.logger) < 1):
             self.logger = 1
-        elif(self.logger > 1):
+        elif(int(self.logger) > 1):
             self.logger = 1
 
-        if(self.tracker < 0):
+        if(int(self.tracker) < 0):
             self.tracker = 0
-        elif(self.tracker > 0 and self.tracker < 1):
+        elif(int(self.tracker) > 0 and int(self.tracker) < 1):
             self.tracker = 1
-        elif(self.tracker > 1):
+        elif(int(self.tracker) > 1):
             self.tracker = 1
 
-        if(self.visualizer < 0):
+        if(int(self.visualizer) < 0):
             self.visualizer = 0
-        elif(self.visualizer > 0 and self.visualizer < 1):
+        elif(int(self.visualizer) > 0 and int(self.visualizer) < 1):
             self.visualizer = 1
-        elif(self.visualizer > 1):
+        elif(int(self.visualizer) > 1):
             self.visualizer = 1
 
-        if(self.archiver < 0):
+        if(int(self.archiver) < 0):
             self.archiver = 0
-        elif(self.archiver > 0 and self.archiver < 1):
+        elif(int(self.archiver) > 0 and int(self.archiver) < 1):
             self.archiver = 1
-        elif(self.archiver > 1):
+        elif(int(self.archiver) > 1):
             self.archiver = 1
 
         return (self.visualize,

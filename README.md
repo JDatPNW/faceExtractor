@@ -12,3 +12,5 @@ When using the Command Line Initializer, all paths are relative to the correspon
 
 To use the GUI Initializer, run "python faceTracking.py -gui", running it without the Flag will trigger the Command Line Initializer.
 Just follow the instructions given to you by the program, to successfully extract the data.
+
+This program should only be used on material that you have permission to!

@@ -13,12 +13,12 @@
    id="Layer_1"
    x="0px"
    y="0px"
-   width="277.43307"
+   width="279.43307"
    height="40.825001"
-   viewBox="0 0 277.43306 40.825"
+   viewBox="0 0 279.43306 40.825"
    enable-background="new 0 0 331.644 40.825"
    xml:space="preserve"
-   sodipodi:docname="SpaceX-Logo.svg"
+   sodipodi:docname="FaceX_Logo.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
    id="metadata27"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
@@ -37,8 +37,8 @@
    id="namedview23"
    showgrid="false"
    inkscape:zoom="2"
-   inkscape:cx="114.83764"
-   inkscape:cy="-14.472055"
+   inkscape:cx="118.83764"
+   inkscape:cy="-14.478696"
    inkscape:window-x="0"
    inkscape:window-y="0"
    inkscape:window-maximized="1"
@@ -46,13 +46,14 @@
    fit-margin-top="0"
    fit-margin-left="2"
    fit-margin-right="0"
-   fit-margin-bottom="0" />
+   fit-margin-bottom="0"
+   scale-x="0.2" />
 <g
    id="g20"
-   transform="translate(-54.210938)">
+   transform="translate(-52.210938)">
 	<path
    style="fill:#005288"
-   d="M 85.292969,15.093752 H 57.248047 l -1.037109,0.777344 v 24.947265 h 7.761718 v -9.355468 l 0.742188,-0.664063 h 8.949218 l 3.548829,-4.441406 H 64.798828 L 63.972656,25.55469 v -5.34375 l 0.740235,-0.679688 h 17.02539 c 1.50427,0.02781 5.400425,-4.279267 3.554688,-4.4375 z"
+   d="M 83.292969,15.093752 H 55.248047 l -1.037109,0.777344 v 24.947265 h 7.761718 v -9.355468 l 0.742188,-0.664063 h 8.949218 l 3.548829,-4.441406 H 62.798828 L 61.972656,25.55469 v -5.34375 l 0.740235,-0.679688 h 17.02539 c 1.50427,0.02781 5.400425,-4.279267 3.554688,-4.4375 z"
    id="path843"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="ccccccccccccccc" />

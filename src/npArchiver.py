@@ -1,40 +1,35 @@
 import cv2
 import re
-import PIL
-import csv
 import os
+import numpy
 from .Archiver import Archiver
 
 
-class csvArchiver(Archiver):
+class npArchiver(Archiver):
 
     def __init__(self):
         self.image_list = []
         self.dir = "none"
 
     def saveImg(self, dir, num, scores, crop_img_re, d, i):
-        if(d[0][0] >= 0 and d[0][1] >= 0 and d[1][0] >= 0 and d[1][1] >= 0):
-            img = cv2.cvtColor(crop_img_re, cv2.COLOR_BGR2RGB)
-            img = PIL.Image.fromarray(img)
-            img = img.convert('RGB')
-            pixels = list(img.getdata())
-            pixels = [item for t in pixels for item in t]
-            self.image_list.append(pixels)
+        if(d[0][0] >= 0 and d[0][1] >= 0 and d[1][0] >= 0 and d[1][1] >= 0 and i == 0):
+            img = cv2.cvtColor(crop_img_re, cv2.COLOR_RGB2GRAY)
+            img = numpy.array(img)
+            face = [d[0][0], d[0][1], d[1][0], d[1][1]]
+            self.image_list.append([img, face])
             if(self.dir == "none"):
                 self.dir = dir
 
     def cropAndResize(self, frame, i, d):
-        if(d[0][0] >= 0 and d[0][1] >= 0 and d[1][0] >= 0 and d[1][1] >= 0):
+        if(d[0][0] >= 0 and d[0][1] >= 0 and d[1][0] >= 0 and d[1][1] >= 0 and i == 0):
             self.crop_img = frame[d[0][1]:d[1][1],  d[0][0]: d[1][0]]
             self.crop_img_re = cv2.resize(self.crop_img, (48, 48))
             return self.crop_img_re
 
     def closeArchiver(self):
         loc = os.path.dirname(os.path.abspath(
-            __file__)) + "/../" + self.dir + "/out.csv"
-        with open(loc, 'w') as file:
-            writer = csv.writer(file)
-            writer.writerows(self.image_list)
+            __file__)) + "/../" + self.dir + "/out.npy"
+        numpy.save(loc, self.image_list)
 
     def getCurrentDir(self, line, experiment, loader):
         url = line

@@ -6,7 +6,7 @@ from .Archiver import Archiver
 
 class jpgArchiver(Archiver):
 
-    def saveImg(self, dir, num, scores, crop_img_re, d):
+    def saveImg(self, dir, num, scores, crop_img_re, d, i):
         if(d[0][0] >= 0 and d[0][1] >= 0 and d[1][0] >= 0 and d[1][1] >= 0):
             self.loc = os.path.dirname(os.path.abspath(
                 __file__)) + "/../" + dir + "/" + str(num) + " - " + str(round(scores, 4)) + ".jpg"

@@ -5,6 +5,7 @@ from .vidLoader import vidLoader
 from .ytLoader import ytLoader
 from .jpgArchiver import jpgArchiver
 from .csvArchiver import csvArchiver
+from .npArchiver import npArchiver
 from .dlibTracker import dlibTracker
 from .ocvTracker import ocvTracker
 from .guiLogger import guiLogger
@@ -49,6 +50,8 @@ class Main:
         else:
             arch = jpgArchiver()
 
+        arch = npArchiver()
+
         if(int(tracker) == 1):
             track = dlibTracker()
         else:
@@ -81,7 +84,7 @@ class Main:
                             log.logFaceCoordinates(
                                 i, d, scores, idx, visualize)
                             crop_img_re = arch.cropAndResize(frame, i, d)
-                            arch.saveImg(dir, num, scores[i], crop_img_re, d)
+                            arch.saveImg(dir, num, scores[i], crop_img_re, d, i)
                             vis.highlightFaces(frame, d)
                             num = num + 1
                         stop = vis.displayVideo(frame)

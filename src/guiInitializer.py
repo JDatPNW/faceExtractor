@@ -18,7 +18,7 @@ class guiInitializer(Initializer):
         self.vLogger.set(True)
         self.vVisualizer = tkinter.BooleanVar()
         self.vVisualizer.set(True)
-        self.vArchiver = tkinter.BooleanVar()
+        self.vArchiver = tkinter.IntVar()
         self.vArchiver.set(True)
         self.vLoader = tkinter.IntVar()
         self.vLoader.set(0)

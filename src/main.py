@@ -45,6 +45,7 @@ class Main:
             load = vidLoader()
         else:
             load = ytLoader()
+
         if(int(archiver) == 0):
             arch = csvArchiver()
         elif(int(archiver) == 1):

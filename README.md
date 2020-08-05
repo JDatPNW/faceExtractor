@@ -1,5 +1,7 @@
-# _![](https://github.com/JDatPNW/faceExtractor/blob/master/src/imgs/icon.ico)_ faceTrack
-A framework which allows to collect data (faces) for machine- and  deep-learning algorithms, from:
+![](https://github.com/JDatPNW/faceExtractor/blob/master/src/imgs/FaceX_Logo.svg)
+
+# _![](https://github.com/JDatPNW/faceExtractor/blob/master/src/imgs/icon.ico)_ FaceX (faceTrack)
+FaceX (Face Extractor) is a framework which allows to collect data (faces) for machine- and  deep-learning algorithms, from:
 * YouTube videos
 * Images (all in 1 folder)
 * Video files (saved locally)

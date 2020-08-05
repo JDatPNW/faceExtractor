@@ -36,7 +36,7 @@ class clInitializer(Initializer):
             'Choose between the cv2[1 - fatser] and GUI[0] Visualizer: ')  # 1 works well
 
         self.archiver = input(
-            'Do you want to safe the results as a .jpg[1] or as a .csv[0]: ')  # 1 works well
+            'Do you want to safe the results as a .npy[2], .jpg[1] or as a .csv[0]: ')  # 1 works well
 
         if(int(self.visualize < 0)):
             self.visualize = 0
@@ -85,8 +85,8 @@ class clInitializer(Initializer):
             self.archiver = 0
         elif(int(self.archiver) > 0 and int(self.archiver) < 1):
             self.archiver = 1
-        elif(int(self.archiver) > 1):
-            self.archiver = 1
+        elif(int(self.archiver) > 1 and int(self.archiver) < 2):
+            self.archiver = 2
 
         return (self.visualize,
                 self.inputfile, self.experiment, self.threshold, self.sampling, self.tracker,

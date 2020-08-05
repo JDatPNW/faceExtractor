@@ -47,10 +47,10 @@ class Main:
             load = ytLoader()
         if(int(archiver) == 0):
             arch = csvArchiver()
-        else:
+        elif(int(archiver) == 1):
             arch = jpgArchiver()
-
-        arch = npArchiver()
+        else:
+            arch = npArchiver()
 
         if(int(tracker) == 1):
             track = dlibTracker()

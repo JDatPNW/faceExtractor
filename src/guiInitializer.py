@@ -123,6 +123,10 @@ class guiInitializer(Initializer):
             self.main, text=".csv", variable=self.vArchiver, value=0)
         self.lArchiverCSV.grid(row=10, column=2, sticky="W")
 
+        self.lArchiverNP = tkinter.Radiobutton(
+            self.main, text=".npy", variable=self.vArchiver, value=2)
+        self.lArchiverNP.grid(row=10, column=3, sticky="W")
+
     def chooseVisualize(self):
         self.lVisual = tkinter.Label(self.main, text="Turn on the visualizer?")
         self.lVisual.grid(row=8, column=0, sticky="W")

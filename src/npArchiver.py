@@ -15,6 +15,7 @@ class npArchiver(Archiver):
         if(d[0][0] >= 0 and d[0][1] >= 0 and d[1][0] >= 0 and d[1][1] >= 0 and i == 0):
             img = cv2.cvtColor(crop_img_re, cv2.COLOR_RGB2GRAY)
             img = numpy.array(img)
+            img = cv2.resize(img, (160, 90))
             face = [d[0][0], d[0][1], d[1][0], d[1][1]]
             self.image_list.append([img, face])
             if(self.dir == "none"):

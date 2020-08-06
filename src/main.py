@@ -7,6 +7,7 @@ from .jpgArchiver import jpgArchiver
 from .csvArchiver import csvArchiver
 from .npArchiver import npArchiver
 from .dlibTracker import dlibTracker
+from .jdTracker import jdTracker
 from .ocvTracker import ocvTracker
 from .guiLogger import guiLogger
 from .cliLogger import cliLogger

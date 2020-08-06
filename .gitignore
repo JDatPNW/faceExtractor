@@ -11,6 +11,11 @@ src/__pycache__
 faceTrack.spec
 dist
 __pycache__
+src/cnn/log
+src/cnn/*.npy
+src/cnn/*.model.*
+src/cnn/checkpoint
+src/cnn/__pycache__
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

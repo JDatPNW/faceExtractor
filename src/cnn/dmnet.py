@@ -18,22 +18,14 @@ from tflearn.layers.normalization import local_response_normalization
 
 def dmnet(width, height, lr):
     network = input_data(shape=[None, width, height, 1], name='input')
-    network = conv_2d(network, 23, 7, strides=4, activation='relu')
-    network = max_pool_2d(network, 4, strides=2)
-    network = local_response_normalization(network)
-    network = conv_2d(network, 128, 5, activation='relu')
-    network = max_pool_2d(network, 4, strides=2)
-    network = local_response_normalization(network)
-    network = conv_2d(network, 128, 4, activation='relu')
-    network = conv_2d(network, 64, 4, activation='relu')
-    network = max_pool_2d(network, 4, strides=2)
-    network = local_response_normalization(network)
-    network = fully_connected(network, 1024, activation='tanh')
-    network = dropout(network, 0.5)
-    network = fully_connected(network, 1024, activation='tanh')
-    network = dropout(network, 0.5)
-    network = fully_connected(network, 4)
-    network = regression(network, optimizer='sgd',
+    network = conv_2d(network, 32, 3, strides=2, activation='relu')
+    network = max_pool_2d(network, 2, strides=2)
+    network = conv_2d(network, 32, 3, activation='relu')
+    network = max_pool_2d(network, 2, strides=2)
+    network = conv_2d(network, 32, 3, activation='relu')
+    network = max_pool_2d(network, 2, strides=2)
+    network = fully_connected(network, 4, activation='linear')
+    network = regression(network, optimizer='adam',
                          loss='mean_square',
                          learning_rate=lr, name='targets')
 

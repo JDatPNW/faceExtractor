@@ -59,6 +59,8 @@ class Main:
         else:
             track = ocvTracker()
 
+        #track = jdTracker()
+
         track.initTracker()
 
         file = load.loadList(inputfile)
